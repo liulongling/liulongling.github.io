@@ -15,10 +15,10 @@ gems: [jekyll-paginate]
 # SNS settings
 RSS: false
 
-#zhihu_username:     lele-feng-15
+zhihu_username:     lele-feng-15
 github_username:    小毛驴
-#douban_username:    69635011
-#weibo_username:     2776591135
+douban_username:    69635011
+weibo_username:     2776591135
 
 
 
