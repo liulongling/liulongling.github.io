@@ -1,0 +1,97 @@
+# Site settings
+title: Candycat Blog
+SEOTitle: Candycat的博客 | Candycat Blog
+header-img: img/home-bg.jpg
+email: lelefeng1992@gmail.com
+description: "喜欢和好奇用计算机产生的一切画面"
+keyword: ""
+url: "candycat1992.github.io"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+timezone: CN
+
+gems: [jekyll-paginate]
+
+
+# SNS settings
+RSS: false
+
+zhihu_username:     lele-feng-15
+github_username:    candycat1992
+douban_username:    69635011
+weibo_username:     2776591135
+#twitter_username:  huxpro
+#facebook_username:  huxpro
+
+
+
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+#disqus_username: _your_disqus_short_name_
+
+# Duoshuo settings
+duoshuo_username: candycat
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 207a182a0a79e8a76bfd02381045166f
+# Google Analytics
+#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+#ga_domain: auto
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "一只喜欢计算机图形的程序媛，爱好写shader、写博客，喜欢用计算机来绘制各种五彩缤纷的画面。"
+sidebar-avatar: /img/avatar-girl.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+    {
+        title: "Iq Blog",
+        href: "http://www.iquilezles.org/www/index.htm"
+    },{
+        title: "Aras Blog",
+        href: "http://aras-p.info/blog/"
+    },{
+        title: "Scrawk Blog",
+        href: "http://scrawkblog.com/"
+    },{
+        title: "雨松MOMO的Blog",
+        href: "http://www.xuanyusong.com/"
+    },{
+        title: "云风的Blog",
+        href: "http://blog.codingnow.com/"
+    }
+]
