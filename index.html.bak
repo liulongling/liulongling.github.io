@@ -1,6 +1,6 @@
 ---
 layout: page
-description: "Java游戏服务器开发"
+description: "一只喜欢计算机图形的程序媛"
 ---
 
 {% for post in paginator.posts %}
