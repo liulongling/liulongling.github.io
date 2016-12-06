@@ -25,8 +25,10 @@ tags:
 主要代码如下：
 
 ```
-package com.game.lll;  
-import java.util.Random;  
+package com.game.lll;
+import java.util.Random;
+
+
 public class FinalT {  
     private static Random random = new Random(20);  
     private final int VALUE_A = 10;  
@@ -73,7 +75,8 @@ VALUE_D:1
  当使用final用于对对象的引用而不是基本类型时，对于基本类型final使数值恒定不变，而对于对象引用，final使引用恒定不变。一旦引用被初始化指向一个对象，就无法再把它改为指向另一个对象。然而，对象自身的数据是可以修改的。
 
 ```
-package com.game.lll;  
+package com.game.lll;
+
 public class FinalTest {  
     private final int a = 10;  
       
@@ -107,8 +110,7 @@ public class FinalTest {
  
  final用于数组和引用时一样的，数组只不过是另一种引用，对于这个变量的引用是不能被重新赋值，但是对象本身是可以修改的。代码如下：
  
- ```
- 
+```
 package com.game.lll;    
 
 public class FinalTest {    
@@ -356,7 +358,7 @@ public final void a()
  第二步：将OverridingFinal的方法a()也改为public
  
  ``` 
- public final void a()  
+public final void a()  
 {  
     System.out.println("OverridingFinal a");  
 }  
