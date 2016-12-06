@@ -1,0 +1,30 @@
+---
+layout:     post
+title:      "深入分析final关键字(一)"
+subtitle:   ""
+date:       2013-04-27 12:00:00
+author:     "donkey"
+header-img: "img/in-post/default-bg.jpg"
+tags:
+    - Java基础提高
+---
+
+ Java的关键字final通常是指被它修饰的数据是不能被改变的，不想改变可能出于两种理由：设计或效率。以下是本文主要大纲：
+final数据的使用
+final参数的使用
+final方法的使用
+final类不能被继承
+
+## 一、final数据
+###  1.1 final修饰变量   
+
+
+## Fabrice Neyret
+
+
+## Aras
+
+
+## Eric Heitz
+
+## 写在最后
