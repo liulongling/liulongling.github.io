@@ -3,7 +3,7 @@ title: 小毛驴 Blog
 SEOTitle: 小毛驴的博客 | 小毛驴 Blog
 header-img: img/home-bg.jpg
 email: 1805348347@qq.com
-description: "喜欢和好奇用计算机产生的一切画面"
+description: "一只喜欢技术和金融的程序员"
 keyword: ""
 url: "liulongling.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -16,7 +16,7 @@ gems: [jekyll-paginate]
 RSS: false
 
 #zhihu_username:     lele-feng-15
-github_username:    小毛驴
+github_username:     小毛驴
 #douban_username:    69635011
 #weibo_username:     2776591135
 
@@ -64,7 +64,7 @@ ba_track_id: 207a182a0a79e8a76bfd02381045166f
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "一只喜欢技术和金融的程序员，爱好玩游戏、玩游戏、玩游戏..."
-sidebar-avatar: /img/avatar-girl.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/my_header.gif      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
