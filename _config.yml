@@ -63,7 +63,7 @@ ba_track_id: 207a182a0a79e8a76bfd02381045166f
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "一只喜欢计算机图形的程序媛，爱好写shader、写博客，喜欢用计算机来绘制各种五彩缤纷的画面。"
+sidebar-about-description: "一只喜欢技术和金融的程序员，爱好玩游戏、玩游戏、玩游戏..."
 sidebar-avatar: /img/avatar-girl.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -76,18 +76,9 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 
 # Friends
 friends: [
-    {
-        title: "Iq Blog",
-        href: "http://www.iquilezles.org/www/index.htm"
-    },{
-        title: "Aras Blog",
-        href: "http://aras-p.info/blog/"
-    },{
-        title: "Scrawk Blog",
-        href: "http://scrawkblog.com/"
-    },{
-        title: "雨松MOMO的Blog",
-        href: "http://www.xuanyusong.com/"
+   {
+        title: "小毛驴的Blog",
+        href: "http://blog.csdn.net/liulongling"
     },{
         title: "云风的Blog",
         href: "http://blog.codingnow.com/"
