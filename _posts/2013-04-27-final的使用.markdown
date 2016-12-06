@@ -16,9 +16,49 @@ final方法的使用
 final类不能被继承
 
 ## 一、final数据
-###  1.1 final修饰变量   
-
-
+  1.1 final修饰变量   
+  
+   * 修饰的变量必须是基本数据类型：告知编译器这一块数据是不变的，这样可以在执行计算时，减少一些运行时的负担。
+   * 论什么情况，final修饰的变量必须初始化。
+```
+package com.game.lll;  
+import java.util.Random;  
+public class FinalT {  
+    private static Random random = new Random(20);  
+    private final int VALUE_A = 10;  
+    private static final int VALUE_B = 20;  
+    public static final int VALUE_C = random.nextInt(10);  
+    public  final int VALUE_D = random.nextInt(10);  
+    public static void main(String[] args) {  
+        FinalTest test = new FinalTest();  
+        //test.VALUE_A = 5;//Error:不可以这样做  
+        //test.VALUE_B  =21;//Error:不可以这样做  
+          
+        FinalT finalT = new FinalT();  
+        FinalT finalT1 = new FinalT();  
+          
+        System.out.println("VALUE_C:"+VALUE_C);  
+        System.out.println("VALUE_C:"+finalT.VALUE_C);  
+        System.out.println("VALUE_C:"+finalT1.VALUE_C);  
+        System.out.println("---------");  
+        System.out.println("VALUE_D:"+finalT.VALUE_D);  
+        System.out.println("VALUE_D:"+finalT1.VALUE_D);  
+    }  
+      
+}
+运行结果：
++------------------第13、15行编译错误-------------------------------+
+The final field FinalTest.a cannot be assigned
++--------------------static final ---------------------------------+
+VALUE_C:3
+VALUE_C:3
+VALUE_C:3
++-----------------------final--------------------------------------+
+VALUE_D:6
+VALUE_D:1
++------------------------------------------------------------------+  
+```
+以上结果得出一点我们不能因为某数据时final的就认为在编译时可以知道它的值。在运行时使用随机生成的VALUE_C和VALUE_D说明了这一点。示例代码展示了final数值定义为static和非static的区别。此区别只有当数值在运行时内被初始化时才会显现，这是因为编译器对编译时数值一视同仁（并且他们可能因为优化而消失）。使用static final 的数值是不可以通过一个新的对象而改变的。这是因为在装载时已经被初始化，而不是每次创建新对象时初始化。
 ## Fabrice Neyret
 
 
