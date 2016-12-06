@@ -118,19 +118,47 @@ IntHashMap:
  
 10000条数据测试结果：
 
-Map类型	第一次取样	第二次取样	第三次取样	GC
+IntHashMap
 
-IntHashMap	795ms	815ms	807ms	NO GC
+第一次取样:795ms
 
-HashMap	866ms	927ms	861ms	11.978ms
+第二次取样:815ms
+
+第三次取样:807ms
+
+GC时间：NO GC
+
+HashMap
+
+第一次取样:866ms
+
+第二次取样:927ms
+
+第三次取样:861ms
+
+GC时间：11.978ms
 
 50000条数据测试结果：
 
-Map类型	第一次取样	第二次取样	第三次取样	GC时间
+IntHashMap
 
-IntHashMap	5166ms	4817ms	4997ms	NO GC
+第一次取样:5166ms
 
-HashMap	4388ms	4430ms	3876ms	40.453ms
+第二次取样:4817ms
+
+第三次取样:4997ms
+
+GC时间：NO GC
+
+HashMap
+
+第一次取样:4388ms
+
+第二次取样:4430ms
+
+第三次取样:3876ms
+
+GC时间：40.453ms
 
  从上面的测试结果可以看出，HashMap会随着容器大小的变化效率明显变慢。也许从数据测试结果来看使用IntHashMap在性能上比HashMap并没有太大优势甚至效率还要低些，但是从GC上来看明显IntHashMap更有优势。那么是什么让他们产生这样的差异？
 
@@ -143,6 +171,7 @@ HashMap	4388ms	4430ms	3876ms	40.453ms
 ![5](http://liulongling.github.io/img/in-post/2013-5-27-inthashmap/5.jpg)
 
 代码清单4:
+
 ```
 static class Entry<K,V> implements Map.Entry<K,V> {  
        final K key;  
@@ -158,24 +187,27 @@ static class Entry<K,V> implements Map.Entry<K,V> {
            next = n;  
            key = k;  
            hash = h;  
-        }  
+        }
+}
 ```
 
 代码清单5:
+
 ```
 public static class IntEntry<VV> implements IntMap.IntEntry<VV> {  
-        protected final int key;  
-        protected VV value;  
-        protected IntEntry<VV> next;  
+    protected final int key;  
+    protected VV value;  
+    protected IntEntry<VV> next;  
   
-        /** 
-         * Create new entry. 
-         */  
-        protected IntEntry(int k, VV v, IntEntry<VV> n) {  
-            value = v;  
-            next = n;  
-            key = k;  
-        }
+    /** 
+     * Create new entry. 
+     */  
+    protected IntEntry(int k, VV v, IntEntry<VV> n) {  
+        value = v;  
+        next = n;  
+        key = k;  
+    }
+}
 ```
         
    2.5 差异二
@@ -183,6 +215,7 @@ public static class IntEntry<VV> implements IntMap.IntEntry<VV> {
    在遍历时，IntHashMap(代码清单6)没有对hash进行比较。
    
  代码清单6
+ 
 ```
 public V get(int key) {  
     int i = indexFor(key, table.length);  
@@ -194,20 +227,22 @@ public V get(int key) {
             return e.value;  
         e = e.next;  
     }  
-}  
+}
 ```
+
 HashMap遍历代码清单7：
+
 ```
 final Entry<K,V> getEntry(Object key) {  
-        int hash = (key == null) ? 0 : hash(key);  
-        for (Entry<K,V> e = table[indexFor(hash, table.length)];  
-             e != null;  
-             e = e.next) {  
-            Object k;  
-            if (e.hash == hash &&  
-                ((k = e.key) == key || (key != null && key.equals(k))))  
-                return e;  
-        }  
-        return null;  
+    int hash = (key == null) ? 0 : hash(key);  
+    for (Entry<K,V> e = table[indexFor(hash, table.length)];  
+         e != null;  
+         e = e.next) {  
+        Object k;  
+        if (e.hash == hash &&  
+            ((k = e.key) == key || (key != null && key.equals(k))))  
+            return e;  
     }  
+    return null;  
+}
 ```
