@@ -15,8 +15,8 @@ gems: [jekyll-paginate]
 # SNS settings
 RSS: false
 
-zhihu_username:liulongling
-github_username:liulongling
+zhihu_username:     liulongling
+github_username:    liulongling
 #douban_username:69635011
 #weibo_username:2776591135
 
@@ -45,7 +45,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username:xiaomaolv
+duoshuo_username: xiaomaolv
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
