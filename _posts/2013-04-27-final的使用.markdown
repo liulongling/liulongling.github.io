@@ -51,8 +51,8 @@ public class FinalT {
       
 }
 ```
-
 运行结果：
+
 ```
 +------------------第13、15行编译错误-------------------------------+
 The final field FinalTest.a cannot be assigned
@@ -95,7 +95,6 @@ public class FinalTest {
     }  
 }  
 ```
-
 运行结果：
 
 ```
@@ -109,7 +108,8 @@ public class FinalTest {
  final用于数组和引用时一样的，数组只不过是另一种引用，对于这个变量的引用是不能被重新赋值，但是对象本身是可以修改的。代码如下：
  
  ```
- package com.game.lll;    
+ 
+package com.game.lll;    
 
 public class FinalTest {    
     private final Value v1 = new Value(10);    
@@ -135,11 +135,9 @@ public class FinalTest {
     }    
 }    
  ```
-
 运行结果:
 
 ```
-
 +------------------------------------------------------------------+
 100
 2
@@ -154,7 +152,7 @@ public class FinalTest {
  
  Java允许生成“空白final”，空白final是指被声明为final但又给未定初值的域。代码如下：
  
- ```
+```
 package com.game.lll;  
   
 public class BlankFinal {  
@@ -182,8 +180,8 @@ public class BlankFinal {
  
  代码如下：
 
- ```
- package com.game.lll;  
+```
+package com.game.lll;  
   
 public class FinalArguments {  
   
@@ -212,7 +210,6 @@ public class FinalArguments {
     }  
 }
 ```
-
 运行结果：
   
 ```
