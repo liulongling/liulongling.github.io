@@ -1,0 +1,275 @@
+---
+layout:     post
+title:      "深入分析String(三)"
+subtitle:   ""
+date:       2015-03-12 12:00:00
+author:     "donkey"
+header-img: "img/in-post/default-bg.jpg"
+tags:
+    - Java基础提高
+---
+
+
+ 本章将深入分析在Java中最常用的String类，主要分析以下几个部分：
+
+   * String类的二大特点：不可变性和不可继承
+   * 关于String的使用和内存分配
+   * String、StringBuffer和StringBuilder之间的关系和区别
+   
+## 一、String类的二大特点
+  1.1 不可变性
+  
+   String对象是不可变的，进入到String源码中找到String构造函数会发现存储字符的char数组是final类型的，在Java中final如果用于数组的话，那么引用指向的对象地址是不可以改变的，来保证成员变量的引用值只能通过构造函数来修改。关于使用final的用法和作用参考我写的这篇文章 [【Java基础提高】深入分析final关键字(一)](https://liulongling.github.io/2015/01/10/final的使用/)。
+
+```
+private final char value[];  
+public String() {  
+    this.value = new char[0];
+}  
+```
+
+  上面说到String是不可变的。可能会有同学说：“毛驴，你不对！我可以改变它”。并举例说明，代码如下：
+
+```
+public static void main(String[] args) {  
+    String s1 = "小毛驴";  
+    s1 = s1.concat("在敲代码！");  
+    System.out.println(s1);  
+} 
+```
+
+控制台输出：
+
+```
+小毛驴在敲代码
+```
+
+  String.concat()和s1+=“在敲代码”的功能相同，都是将2个元素拼在一起。那么我们来看下concat方法是怎么修改s1的值，代码如下所示。原来它是重新创建了一个更大空间的新数组，分配的空间大小是（旧值长度＋新值长度），然后将旧数组里面的元素拷贝到新数组中，最后返回一个新的String实例，它并不是直接修改数组中的元素。
+
+```
+public String concat(String str) {  
+    int otherLen = str.length();  
+    if (otherLen == 0) {  
+        return this;  
+    }  
+    int len = value.length;  
+    char buf[] = Arrays.copyOf(value, len + otherLen);  
+    str.getChars(buf, len);  
+    return new String(buf, true);  
+}
+```
+
+另外在String类中每一个会修改String值的方法，实际上都是返回了一个新的String对象。如concat、replace等等方法。
+
+```
+public String replace(char oldChar, char newChar) {  
+    if (oldChar != newChar) {  
+       int len = value.length;  
+       int i = -1;  
+       char[] val = value; /* avoid getfield opcode */  
+  
+       while (++i < len) {  
+           if (val[i] == oldChar) {  
+               break;  
+           }  
+       }  
+       if (i < len) {  
+           char buf[] = new char[len];  
+           for (int j = 0; j < i; j++) {  
+               buf[j] = val[j];  
+           }  
+           while (i < len) {  
+               char c = val[i];  
+               buf[i] = (c == oldChar) ? newChar : c;  
+               i++;  
+           }  
+           return new String(buf, true);  
+       }  
+   }  
+   return this;  
+}  
+```
+
+  1.2 不可继承
+  
+  在Java中，当你将某个类定义为final class时，那么子类就无法继承该类。String类就是一个final类
+    
+```
+public final class String  
+    implements java.io.Serializable, Comparable<String>, CharSequence {  
+}  
+```  
+
+## 二、String类的使用
+
+ String类的使用大致归纳为以下几种方法：
+
+   * 直接定义。如String s1 = "小毛驴";
+   * 使用new String()。如String s1 = new String("小毛驴");
+   * 使用+= 重载操作符。如s1+="在唱歌";
+
+2.1 常量池
+
+  在使用String之前不得不说下方法区里的常量池，在<<深入Java虚拟机>>书中作者是这样描述的：虚拟机必须为每个被装载的类型维护一个常量池。常量池就是该类型所用到常量的一个有序集和，包括直接常量（string,integer和 floating point常量）和对其他类型，字段和方法的符号引用。对于String常量，它的值是在常量池中的。而JVM中的常量池在内存当中是以表的形式存在的， 对于String类型，有一张固定长度的CONSTANT_String_info表用来存储文字字符串值，注意：该表只存储文字字符串值，不存储符号引 用。
+对JVM和内存比较薄弱的同学参考下这篇文章：[Java 内存模型及GC原理](http://blog.csdn.net/ithomer/article/details/6252552/)
+
+3.2 直接定义
+ 
+   直接定义的原理是在程序编译时期，先去常量池中检查这个值（小毛驴）是否存在。如果不存在，则在常量池中开辟一个新的空间存储这个值并在栈中创建一个引用指向它。如果存在，则直接在栈区创建一个引用指向常量池中的值，这样既保证了常量池中值的唯一性，又能为本来内存空间较小的常量池节省一点点空间。如图所示：
+
+   ![1](http://liulongling.github.io/img/in-post/2015-3-12-string/2.jpg)
+   
+```
+private void test1()  
+{  
+    String s1 = "小毛驴";  
+    String s2 = "在唱歌";  
+    String s3 = s1;  
+          
+          
+    System.out.println("s1 equals s3 "+s1.equals(s3));  
+    System.out.println("s1  ==    s3 "+(s1==s3));  
+}  
+```
+
+控制台
+
+```
+s1 equals s3 true
+s1  ==    s3 true
+```
+
+3.3 使用new String()
+
+使用new String()的原理和直接定义相似，它们都会去常量池中检查值(小毛驴)是否存在。不一样的是new String会比直接定义多开辟一个内存空间，它会在常量池中开辟空间同时又在堆区中分配一个空间来保存该值，最后在栈区由s1来保存在堆区的内存地址。很奇怪Java这么做的意义是什么？如果常量池中的值没有程序引用它的话，那么不是会浪费内存空间吗？如图所示：
+
+   ![1](http://liulongling.github.io/img/in-post/2015-3-12-string/1.jpg)
+
+```
+private void test2()  
+{  
+    String s1 = new String("小毛驴");  
+    String s2 = s1;  
+    String s3 ="小毛驴";  
+    System.out.println("s1==s2 "+(s1 == s2));  
+    System.out.println("s1==s3 "+(s1 == s3));  
+          
+}  
+```
+
+控制台
+
+```
+s1==s2 true
+s1==s3 false
+```
+
+如上控制台输出，s1==s2为true，其实s2是将s1的引用地址拷贝给自己，它们指向的是同一个内存地址。而s3则不一样，s3引用地址的字符串是在常量池中生成的，s1引用的内存地址是在堆区中生成的，让2个不同内存空间的地址进行比较肯定是不相同的。
+
+3.4 使用+重载符
+
+情景一：
+
+```
+String s1 = "小"+"毛驴";  
+String s2 ="小毛驴" ;        
+System.out.println("s1==s2 "+(s1==s2));//结果=true  
+```
+
+分析：JVM对于字符串常量的"+"号连接，在程序编译期，JVM就将常量字符串的"+"连接优化为s1="小毛驴"。所以上面的结果会返回true。如下图所示：
+
+   ![1](http://liulongling.github.io/img/in-post/2015-3-12-string/1.jpg)
+   
+情景二：
+
+```
+String s1 = new String("小毛驴")+"在唱歌";  
+String s2 = "小毛驴";  
+String s3 = s2+"在唱歌";  
+String s4 = "小毛驴在唱歌";  
+System.out.println(s1==s4);//结果=false  
+System.out.println(s1==s3);//结果=false  
+System.out.println(s3==s4);//结果=false  
+```
+
+  分析：上面说到对于字符串常量的"+"号连接会在程序编译期被JVM优化，但是引用的值在程序编译期间是无法被确定的。只能在程序执行期间动态分配地址然后将地址存储到s1、s3中，所以上面的结果都是false。那么有什么办法可以让引用的值等于s4吗？答案是有的，在s4前面使用intern方法。在s4前面使用intern方法。在s4前面使用intern方法总要的事情说三遍！！！
+注：只有在JDK7之后结果才会返回true。
+
+情景三：
+
+```
+String s1 = new String("小")+"毛驴";  
+s1.intern();  
+String s2 = "小毛驴";  
+System.out.println(s1==s2);//结果=true  
+```
+
+分析：intern的作用是为每个唯一的字符序列生成一个且仅生成一个String引用，对于这段代码String s1 = new String("小")+"毛驴";其实是在堆区重新创建了一个对象然后把对象地址给了s1，其中s1指向的内容是"小毛驴"，但是在常量池中是没有"小毛驴"的。这时候使用了s1.intern()方法将"小毛驴"存储到常量池中，然后返回值在常量池的地址。当s2再去常量池中创建这个值的时候发现已经存在了就直接返回这个值的地址给s2，所以结果是true
+
+情景四：
+
+```
+String s1 = "小毛驴";   
+final String s2 = "毛驴";   
+String s3 = "小" + s2;   
+System.out.println(s1 == s3); //结果 = true  
+```
+分析：和情景2唯一不同的是s2使用了final修饰，对于final修饰的变量，它在编译时被解析为常量值的一个本地拷贝存储到自己的常量池中或 嵌入到它的字节码流中。所以此时"小"+s2和"小"+"毛驴"效果是一样的。
+
+情景五：
+
+```
+String s1 = "小毛驴";   
+final String s2 = new String("毛驴");   
+String s3 = "小" + s2;   
+System.out.println(s1 == s3); //结果 = false  
+```
+
+分析：和情景四一样都使用了final修饰，但是JVM对于new String("毛驴")在编译期是无法确定的，和情景二一样只有在实例化后才能将内存地址赋给s2，故结果是false。
+
+  3.4 使用+重载符
+  
+  在Java编程思想一书中作者提到过编译器对String s1 = "小"+"毛"+"驴";的优化，重点提到了编译器自动引入了StringBuilder类，原因是因为效率更高一些。编译器优化后的代码如下：
+  
+``` 
+String  a  =  "小";     
+String  b  =  "毛";     
+String  c  =  "驴";     
+String  s  =   a  +  b  +  c;    
+  
+StringBuilder temp = new StringBuilder();     
+temp.append(a).append(b).append(c);     
+String s1 = temp.toString();  
+System.out.println(s==s1);//结果＝false  
+```
+
+书中举例说明不要随意使用String对象，虽然编译器会自动地优化性能。例子采用2种方式生成一个String。
+
+方法一：
+
+``` 
+String s = "小毛驴";   
+for(int i = 0; i < 100; i++) {   
+	s += "驴";   
+}   
+```
+
+方法二：
+
+``` 
+StringBuilder builder = new StringBuilder();     
+String s = "小毛驴";  
+for(int i = 0;i < 100;i++){  
+     builder.append("驴");  
+}  
+String s1 = builder.toString(); 
+```
+
+由于编译器的性能优化会每次在for(){}循环里创建StringBuilder对象，每一次++就会创建一次对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后 append 字符串，如此循环直至结束。 如果我们直接采用 StringBuilder 对象进行 append 的话，我们可以节省 N - 1 次创建和销毁对象的时间。所以对于在循环中要进行字符串连接的应用，一般都是多线程使用StringBuffer和单线程下使用StringBulider对象来进行append操作。
+
+String、StringBuffer和StringBuilder之间的联系和区别
+ 他们之间的联系和区别：
+
+   * 和String不一样，StringBuffer和StringBuilder类的char value数组不是final修饰的
+   * 每一次修改value值，String返回的是一个新的对象，而StringBuffer和StringBuilder返回的是this
+   * 在多线程环境下，StringBuilder是不安全的，String和StringBuffer是安全的。
