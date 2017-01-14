@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "一元夺宝活动设计"
+title:      "App上线后一定要做的8件事(转载)"
 subtitle:   ""
 date:       2016-12-12 15:00:00
 author:     "donkey"
