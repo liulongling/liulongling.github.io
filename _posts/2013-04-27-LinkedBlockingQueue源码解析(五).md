@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "LinkedBlockingQueue的使用"
+title:      "LinkedBlockingQueue源码分析(五)"
 subtitle:   ""
 date:       2013-04-27 18:00:00
 author:     "donkey"
