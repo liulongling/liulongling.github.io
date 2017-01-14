@@ -2,7 +2,7 @@
 layout:     post
 title:      "深入分析synchronized(三)"
 subtitle:   ""
-date:       2016-01-25 15:00:00
+date:       2013-04-11 15:00:00
 author:     "donkey"
 header-img: "img/in-post/firewatch.jpg"
 tags:
@@ -258,5 +258,5 @@ UnsafeCount.count=0
   
 详细请参考这篇文章[：深入理解Java虚拟机笔记---原子性、可见性、有序性](http://www.tuicool.com/articles/ru6vUvn)
 
-## 4.4 应用场景
+> 作者：小毛驴，一个Java游戏服务器开发者　原文地址[：https://liulongling.github.io/](https://liulongling.github.io//)
 

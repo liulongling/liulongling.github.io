@@ -2,7 +2,7 @@
 layout:     post
 title:      "LinkedBlockingQueue的使用"
 subtitle:   ""
-date:       2016-01-27 18:00:00
+date:       2013-04-27 18:00:00
 author:     "donkey"
 header-img: "img/in-post/firewatch.jpg"
 tags:
@@ -242,3 +242,5 @@ void fullyUnlock() {
 ```
 
 注意，锁的释放顺序与加锁顺序是相反的。
+
+> 作者：小毛驴，一个Java游戏服务器开发者　原文地址[：https://liulongling.github.io/](https://liulongling.github.io//)
