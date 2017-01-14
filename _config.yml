@@ -1,9 +1,9 @@
 # Site settings
-title: 小毛驴 Blog
-SEOTitle: 小毛驴的博客 | 小毛驴 Blog
+title: 小毛驴游戏工作室
+SEOTitle: 小毛驴游戏工作室 | 小毛驴游戏工作室
 header-img: img/home-bg.jpg
 email: 1805348347@qq.com
-description: "一只喜欢技术和金融的程序员"
+description: "一只Java游戏服务器程序员"
 keyword: ""
 url: "liulongling.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -63,7 +63,7 @@ ba_track_id: 207a182a0a79e8a76bfd02381045166f
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "一只喜欢技术和金融的程序员，爱好玩游戏、玩游戏、玩游戏..."
+sidebar-about-description: "一只Java游戏服务器程序员"
 sidebar-avatar: /img/my_header.gif      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
