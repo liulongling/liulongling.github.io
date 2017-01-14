@@ -1,0 +1,86 @@
+# Site settings
+title: 小毛驴游戏工作室
+SEOTitle: 小毛驴游戏工作室 | 小毛驴游戏工作室
+header-img: img/home-bg.jpg
+email: 1805348347@qq.com
+description: "一只Java游戏服务器程序员"
+keyword: ""
+url: "liulongling.github.io"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
+timezone: CN
+
+gems: [jekyll-paginate]
+
+
+# SNS settings
+RSS: false
+
+zhihu_username:     liulongling
+github_username:    liulongling
+#douban_username:69635011
+weibo_username:     5645168613
+
+
+
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+#disqus_username: _your_disqus_short_name_
+
+# Duoshuo settings
+duoshuo_username: xiaomaolv
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 207a182a0a79e8a76bfd02381045166f
+# Google Analytics
+#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+#ga_domain: auto
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "一只喜欢技术和金融的程序员，爱好玩游戏、玩游戏、玩游戏..."
+sidebar-avatar: /img/my_header.gif      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+   {
+        title: "小毛驴的Blog",
+        href: "http://blog.csdn.net/liulongling"
+    },{
+        title: "云风的Blog",
+        href: "http://blog.codingnow.com/"
+    }
+]
