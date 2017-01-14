@@ -1,0 +1,192 @@
+---
+layout:     post
+title:      "原子性(一)"
+subtitle:   ""
+date:       2016-01-20 15:00:00
+author:     "donkey"
+header-img: "img/in-post/default-bg.jpg"
+tags:
+    - Java并发编程
+---
+
+什么是线程安全性
+
+如果一个类可以安全地被多个线程使用，它就是线程安全的。你无法对此论述提出任何争议，但也无法从中得到更多有意义的帮助。那么我们如何辨别线程安全与非线程安全的类？我们甚至又该如何理解“安全”呢？任何一个合理的“线程安全性”定义，其关键在于“正确性”的概念。在<<Java并发编程实践>>书中作者是这样定义的：
+> 一个类是是线程安全的，是指在被多个线程访问时，类可以持续进行正确的行为。或当多个线程访问一个类时，如果不用考虑这些线程在运行时环境下的调度和交替执行，并且不需要额外的同步及在调用方代码不必作其他的协调，这个类的行为仍然是正确的，那么称这个类是线程安全的。
+
+  先来看看一个不安全的例子：使用程序实现一个计数器，期望得到的结果是100，代码如下：
+  
+```
+package com.lll.test;  
+  
+import java.util.concurrent.ExecutorService;  
+import java.util.concurrent.Executors;  
+import java.util.concurrent.TimeUnit;  
+import java.util.concurrent.atomic.AtomicInteger;  
+  
+public class UnsafeCount {  
+    //public static AtomicInteger count = new AtomicInteger(0);  
+    public static int count = 0;  
+  
+    public static void inc() {  
+        try {  
+            Thread.sleep(1000);  
+        } catch (InterruptedException e) {  
+            e.printStackTrace();  
+        }  
+        //count.incrementAndGet();  
+        count++;  
+    }  
+  
+    public static void main(String[] args) throws InterruptedException {  
+  
+        ExecutorService service=Executors.newFixedThreadPool(Integer.MAX_VALUE);  
+  
+        for (int i = 0; i < 100; i++) {  
+            service.execute(new Runnable() {  
+                @Override  
+                public void run() {  
+                    UnsafeCount.inc();  
+                }  
+            });  
+        }  
+  
+        service.shutdown();  
+        //避免出现main主线程先跑完而子线程还没结束，在这里给予一个关闭时间  
+        service.awaitTermination(3000,TimeUnit.SECONDS);  
+        System.out.println("运行结果:UnsafeCount.count=" + UnsafeCount.count);  
+    }  
+}  
+
+```
+
+控制台输出：
+
+```
+
+运行结果:UnsafeCount.count=98
+
+```
+ 最终结果是98，并非是我们期望的100，这也正是因为线程不安全导致的错误结果。
+ 
+ 原因分析：
+ 
+ 大家都知道，计算机在执行程序时，每条指令都是在CPU中执行的，而执行指令过程中，势必涉及到数据的读取和写入。由于程序运行过程中的临时数据是存放在主内存中的，这时就存在一个问题，由于CPU执行速度很快，而从主内存读取数据和向主内存写入数据的过程跟CPU执行指令的速度比起来要慢的多，因此如果任何时候对数据的操作都要通过和主内存的交互来进行，会大大降低指令执行的速度。因此在就有了主内存和本地内存。也就是，当程序在运行过程中，会将运算需要的数据从主存复制一份到线程的本地内存中，创建一个count变量副本，那么CPU进行计算时就可以直接从本地内存加载，使用，赋值和写入到内存中，最后再将副本值同步到主内存中。如下图：
+ 
+![image](http://img.blog.csdn.net/20160703193938141?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+  
+正因为上面的计数操作是不具备原子性的，当线程一正在将新的副本值newCount同步到主内存时，线程二从本地内存加载到数据oldCount，加载到的数据并非是线程一改过之后的newCount，所以结果导致数据和预期的不一样。
+
+解决办法一：使用AtomicInteger计数
+
+一个提供原子操作的Integer的类。在Java语言中，++count和count++操作并不是线程安全的，在使用的时候，不可避免的会用到synchronized关键字。而AtomicInteger则通过一种线程安全的加减操作来确保所有访问count状态的操作都是原子的。修改第9行和18行代码如下：
+
+```
+package com.lll.test;  
+  
+import java.util.concurrent.ExecutorService;  
+import java.util.concurrent.Executors;  
+import java.util.concurrent.TimeUnit;  
+import java.util.concurrent.atomic.AtomicInteger;  
+  
+public class UnsafeCount {  
+    public static AtomicInteger count = new AtomicInteger(0);  
+    //public static int count = 0;  
+  
+    public static void inc() {  
+        try {  
+            Thread.sleep(1000);  
+        } catch (InterruptedException e) {  
+            e.printStackTrace();  
+        }  
+        count.incrementAndGet();  
+        //count++;  
+    }  
+  
+    public static void main(String[] args) throws InterruptedException {  
+  
+        ExecutorService service=Executors.newFixedThreadPool(Integer.MAX_VALUE);  
+  
+        for (int i = 0; i < 100; i++) {  
+            service.execute(new Runnable() {  
+                @Override  
+                public void run() {  
+                    UnsafeCount.inc();  
+                }  
+            });  
+        }  
+  
+        service.shutdown();  
+        //避免出现main主线程先跑完而子线程还没结束，在这里给予一个关闭时间  
+        service.awaitTermination(3000,TimeUnit.SECONDS);  
+        System.out.println("运行结果:UnsafeCount.count=" + UnsafeCount.count);  
+    }  
+}  
+
+```
+
+控制台输出：
+
+```
+UnsafeCount.count=100
+
+```
+
+AtomicInteger源码剖析
+```
+// setup to use Unsafe.compareAndSwapInt for updates  
+    private static final Unsafe unsafe = Unsafe.getUnsafe();  
+    private static final long valueOffset;  
+    private volatile int value;  
+    static {  
+      try {  
+        valueOffset = unsafe.objectFieldOffset(AtomicInteger.class.getDeclaredField("value"));  
+      } catch (Exception ex) { throw new Error(ex); }  
+    }  
+
+```
+  从AtomicInteger源码可以看出AtomicInteger使用了Unsafe提供的volatile和compareAndSet(简称：CAS)函数实现原子操作。
+  
+  第一步：先在类中获取了Unsafe的实例，然后通过Unsafe实例的objectFieldOffset方法获得value在内存中的位置。为什么它要获取value在内存中的位置？我们从incrementAndGet方法依次往下分析
+  
+```
+/** 
+    * Atomically increments by one the current value. 
+    * 
+    * @return the updated value 
+    */  
+   public final int incrementAndGet() {  
+       for (;;) {  
+           int current = get();  
+           int next = current + 1;  
+           if (compareAndSet(current, next))  
+               return next;  
+       }  
+   }  
+
+```
+
+第二步：通过get()方法获得value的值+1，其中value是volatile类型，当其它线程修改value值时，可以保证每次拿到的value值时最新的。然后再将value传给了compareAndSet函数。compareAndSet代码如下：
+  
+```
+/** 
+    * “Atomically sets the value to the given updated value if the current        *value {@code ==} the expected value.
+    *@return true if successful. False return indicates that the actual
+    *value was not equal to the expected value.”
+    * 
+    */  
+public final boolean compareAndSet(int expect, int update) {  
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update);  
+}  
+```
+
+第三步：compareAndSet()方法拿到expect和update值后，如果valueOffset位置包含的值与expect值相同，则更新valueOffset位置的值为update，并返回true，否则不更新，返回false。
+
+
+> 作者：小毛驴，一个游戏人　
+
+> 梦想：世界和平　　　
+
+> 原文地址：https://liulongling.github.io/
+
+> 本博客中未标明转载的文章归作者小毛驴所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。
