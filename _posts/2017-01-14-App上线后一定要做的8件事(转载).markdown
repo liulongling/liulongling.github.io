@@ -2,11 +2,11 @@
 layout:     post
 title:      "App上线后一定要做的8件事(转载)"
 subtitle:   ""
-date:       2016-12-12 15:00:00
+date:       2017-01-14 15:00:00
 author:     "donkey"
 header-img: "img/in-post/default-bg.jpg"
 tags:
-    - 游戏运营
+    - 分享文章
 ---
 
 如果您以为熬过了漫长的开发过程，App 顺利上线之后就可以悠闲地看着您的 App 不断累积用户，一路攀升至应用榜首？那可真是呵呵呵。天下哪有这么容易的事情！
