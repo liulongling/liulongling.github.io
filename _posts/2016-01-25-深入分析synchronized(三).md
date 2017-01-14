@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "深入分析synchronized(二)"
+title:      "深入分析synchronized(三)"
 subtitle:   ""
 date:       2016-01-25 15:00:00
 author:     "donkey"
@@ -257,3 +257,6 @@ UnsafeCount.count=0
   8.传递性(Transitivity)：如果操作A先行发生于操作B，操作B先行发生于操作C，那就可以得出操作A先行发生于操作C的结论。
   
 详细请参考这篇文章[：深入理解Java虚拟机笔记---原子性、可见性、有序性](http://www.tuicool.com/articles/ru6vUvn)
+
+## 4.4 应用场景
+
