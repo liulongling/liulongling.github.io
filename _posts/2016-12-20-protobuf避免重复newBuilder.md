@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "开发笔记(一)：避免重复代码"
+title:      "开发笔记(一)：protobuf避免重复newBuilder"
 subtitle:   ""
 date:       2016-12-20 15:00:00
 author:     "donkey"
