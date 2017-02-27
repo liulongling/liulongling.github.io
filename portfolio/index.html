@@ -1,568 +1,517 @@
+---
+title: "Portfolio"
+layout: default
+description: "What I did"
+header-img: "img/portfolio-bg.jpg"
+---
 
-<html>
-	<!DOCTYPE html>
-	<html lang="en">
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" id="tag-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>关于我</title>
-		<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css" tppabs="http://www.fittingapp.com/semantic/dist/semantic.min.css">
-		<link rel="stylesheet" href="style/animate.css" tppabs="http://www.fittingapp.com/style/animate.css">
+<!-- Language Selector -->
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+    <select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+        <option value="0" selected> 中文 </option>
+    </select>
+    <div class="row">
+        </br>
+    </div>
+</div>
 
-		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" tppabs="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-		<script src="semantic/dist/semantic.min.js" tppabs="http://www.fittingapp.com/semantic/dist/semantic.min.js"></script>
+<!-- Chinese Version -->
+<div class="zh">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class = "panel panel-default">   
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>工作经历</h1>
+                                </div>
+                            </div>
+                            2011-10~2014-02 2年 无锡汉风网络科技有限公司 游戏服务端开发
+							2014-02~2015-02 1年 无锡汉风网络科技有限公司 游戏服务端主程
+							2015-02~2016-03 1年 优优学教育科技有限公司 android开发经理
+							2016-03~2016-09 半年 独立游戏开发 独立游戏开发
+							2016-09~至今 至今 北京七彩柠檬科技有限公司 战姬学院服务端开发
+                        </div>
+                    </div>    
 
-		<link href="http://www.youziku.com/webfont/CSS/b639450b0a54d6ac6997f066f3a7caac" tppabs="http://www.youziku.com/webfont/CSS/b639450b0a54d6ac6997f066f3a7caac" rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="js/jquery.fullPage.css" tppabs="http://www.fittingapp.com/js/jquery.fullPage.css" />
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/2d-to-3d.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p>
+                                        <b>交互式2D到3D卡通建模系统</b></br>
+                                        冯乐乐，杨旭波，肖双九，姜帆</br>
+                                        <i>The 10th International Conference on E-Learning and Games (Edutainment 2016)</i>
+                                    </p>
+                                    <p>本文提出了一个快速将2D卡通图片转化成3D模型的系统，可以让非专业人员或儿童更加轻松地来创建自定义的3D模型。我们的系统使用了基于Poisson等式来生成三维模型的方法，它解决前人工作中许多针对建模类型的约束问题。我们还提出了一种新的纹理生成方法，来为3D模型的正反面都生成合适的纹理，从而得到用原始2D卡通图片着色的风格化卡通模型。结果显示，我们的方法可以大大简化传统的建模软件的建模流程。</p>
+                                    <a href="https://vimeo.com/157542775" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
 
-		<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
-		<script type="text/javascript" src="js/jquery.slimscroll.min.js" tppabs="http://www.fittingapp.com/js/jquery.slimscroll.min.js"></script>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/mobile-tracking.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p>
+                                        <b>基于移动平台的实时物体追踪系统</b></br>
+                                        冯乐乐，杨旭波</br>
+                                        <i>上海交通大学2014届优异学士学位论文</i>
+                                    </p>
+                                    <p>本文分析了现有的基于自然特征的物体识别和追踪技术，设计并实现了一款基于移动终端的实时物体追踪系统，以用于增强现实的应用。我们通过实现一个使用FAST算子修改后的SIFT算法，来实现移动终端的物体识别。姿态估计则从识别出的原目标和帧图像的匹配关系得到变换矩阵，以此来显示三维物体。除此之外，我们还实现了一个PC端的管理工具，用于统 一管理所有预处理的目标图片。我们还对系统的健壮性和性能等方面进行了评估，并实现了一个在现实生活中的演示应用。</p>
+                                    <a href="https://vimeo.com/157533815" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-		<script type="text/javascript" src="js/jquery.fullPage.min.js" tppabs="http://www.fittingapp.com/js/jquery.fullPage.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#fullpage').fullpage({
-					//                anchors: ['indexSection', 'section2', 'section3', 'section4', 'section5', 'footer'],
-					navigation: true,
-					navigationPosition: 'right',
-					//                navigationTooltips: ['First page', 'Second page', 'Third and last page']
-					sectionsColor: ['#e5e5e5', '#fff', '#e9e9e9', '#fff', '#e9e9e9', '#fff'],
-					onLeave: function(index, nextIndex, direction) {
-						var leavingSection = $(this);
-						if(index == 2) {
-							//                        alert("Section 2 ended loading");
-							$('#section2 img').addClass('animated fadeOutDown');
-						};
-						if(index == 3) {
-							//                        alert("Section 2 ended loading");
-							$('#section3 img').addClass('animated fadeOutDown');
-						};
-						if(index == 4) {
-							//                        alert("Section 2 ended loading");
-							//							$('#section4 ul').addClass('animated fadeOutDown');
-							$('#section4 .skill').addClass('animated fadeOutDown');
-						};
-						if(index == 5) {
-							//                        alert("Section 2 ended loading");
-							$('#section5 img').addClass('animated fadeOutDown');
-						};
-						if(index == 6) {
-							//                        alert("Section 2 ended loading");
-							$('#section6 img').addClass('animated fadeOutDown');
-						};
-						if(index == 7) {
-							//                        alert("Section 2 ended loading");
-							$('#section7 img').addClass('animated fadeOutDown');
-						};
-					},
-					'afterLoad': function(anchorLink, index) {
-						if(index == 2) {
-							//                        alert("Section 2 ended loading");
-							$('#section2 img').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInLeft');
-						};
-						if(index == 3) {
-							//                        alert("Section 2 ended loading");
-							$('#section3 img').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInRight');
-						};
-						if(index == 4) {
-							//                        alert("Section 2 ended loading");
-							//							$('#section4 ul').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInLeft');
-							$('#section4 .skill').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInLeft');
-						};
-						if(index == 5) {
-							//                        alert("Section 2 ended loading");
-							$('#section5 img').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInRight');
-						};
-						if(index == 6) {
-							//                        alert("Section 2 ended loading");
-							$('#section6 img').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInRight');
-						};
-						if(index == 7) {
-							//                        alert("Section 2 ended loading");
-							$('#section7 img').removeClass('animated fadeOutDown').removeClass('hidden').addClass('animated fadeInLeft');
-						};
-					}
-				});
-			});
-		</script>
-		<link rel="stylesheet" type="text/css" href="style/main.css" tppabs="http://www.fittingapp.com/style/main.css" />
-		<link rel="stylesheet" type="text/css" href="css/resume.css" />
-		<script src="js/resume.js" type="text/javascript" charset="utf-8"></script>
-	</head>
+                <div class = "panel panel-default">   
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>项目</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-	<body>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/happy-tree.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>游戏《欢乐树》</b></p>
+                                    <p><i>开发工具：Unity3D, Shader, C#</i></p>
+                                    <p>个人开发的独立游戏。玩家需要帮助欢乐树开满花朵。花朵可以由六种不同颜色的元素构成，每种元素有两种属性，速度（移动速度）和力量（生长速度），且不同类型的元素之间属性相克，例如红->绿->蓝->红。玩家在每个关卡需要让己方的元素占领所有区域即可获胜。期间，玩家可以利用通过每关得到的星星来升级属性或解锁新的元素。</p>
+                                    <a href="https://vimeo.com/158157628" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
 
-		<div id="fullpage">
-			<div class="section" id="indexSection">
-				<!--   <div class="blk-sidebar">
-            <img class="ui medium centered image" src="images/logo.png">
-        </div>-->
-				<div class="ui padded grid">
-					<div class="three wide mobile two wide tablet one wide computer black column">
-						<p><span class="ui centered image animated fadeInDown logo">He</span></p>
-					</div>
-					<div class="thirteen wide mobile fourteen wide tablet fifteen wide computer column">
-						<div class="ui page grid bottom-align">
-							<div class="row animated fadeInUp">
-								<h1>
-			                       刘龙玲 <br>
-			                       工作经验和经历 <br>
-                       			</h1>
-							</div>
-							<div class="row animated fadeInRight">
-								<div class="row basiclayer text">
-									<ul>
-										<li>2011-10~2014-02 | 2年  | 无锡汉风网络科技有限公司  | 游戏服务端开发 |</li>
-										<li>2014-02~2015-02 | 1年  | 无锡汉风网络科技有限公司  | 游戏服务端主程 |</li>
-										<li>2015-02~2016-03 | 1年  | 优优学教育科技有限公司  | android开发经理 |</li>
-										<li>2016-03~2016-09 | 半年  | 独立游戏开发  | 独立游戏开发 |</li>
-										<li>| 2016-09~至今 | 至今  | 北京七彩柠檬科技有限公司  | 战姬学院服务端开发 |</li>
-									</ul>
-									<div class="clear"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/sampling.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>裸眼3D实时渲染系统</b></p>
+                                    <p><i>开发工具：Unity3D, Shader, Compute Shader, C#</i></p>
+                                    <p>该项目在Unity中通过输入游戏画面和场景的深度纹理来实时渲染成适合于裸眼3D的立体效果。支持4k分辨率，支持Windows平台。本项目<b>通过GPU加速技术将算法效率提高了130%</b>，达到了实时速度。</p>
+                                </div>
+                            </div>
+                        </li>
 
-				</div>
-				<!--色块网格-->
-			</div>
-			<!--section1-->
-			<div class="section" id="section2">
-				<div class="ui middle aligned container centered stackable grid container">
-					<div class="six wide column">
-						<img class="hidden ui medium centered image" src="images/java.jpg" alt="" />
-					</div>
-					<div class="six wide centered right floated column">
-						<h1 class="chinese">求职意向<br/>Java软件工程师</h1>
-						<p class="">
-							<p>擅长Java后端研发，分布式服务开发
-								<br/>掌握网易开源游戏服务器框架Pomelo
-								<br/>精通Cocos、了解Unity、Egret等游戏前端引擎
-								<br/>热衷于在博客分享经验与技术：
-								<a href="http://hjcenry.github.io">个人博客</a>
-								<br/>经常分享项目在gihtub：
-								<a href="http://github.com/hjcenry">个人github</a>
-								<br/>腾讯GAD开发社区特约撰稿人
-								<br/>根据个人经验编写《深度解析Java游戏服务器开发》一书
-								<br/>获得GAD手游服务器重难点问题解决方案征集大赛一等奖:<a href="http://gad.qq.com/megagame/index/61">大赛链接</a></p>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="section" id="section3">
-				<div class="ui middle aligned container centered stackable grid container">
-					<div class="ten wide centered column">
-						<h1>工作经历</h1>
-						<div class="work">
-							<p>
-								<span class="time">2014.07——2015.03</span>&nbsp;&nbsp;
-								<span class="company">摩卡软件（天津）有限公司北京分公司（实习）</span>
-							</p>
-							<ul class="text">
-								<!--<li>
-									<span class="companyinfo">公司描述：属于华胜天成子公司，主要提供it服务和解决方案，目前在向互联网公司转型</span>
-								</li>-->
-								<li>
-									<span class="dept">部门：新媒体业务部</span>
-								</li>
-								<li>
-									<span class="job">职位：Java软件工程师</span>
-								</li>
-								<li>
-									主要职责：负责中国移动客服系统活动模块开发，以及天津广电微网站后台开发
-								</li>
-							</ul>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/npr-lab.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>NPR实验室</b></p>
+                                    <p><i>开发工具：Unity3D, Shader, C#</i></p>
+                                    <p>该项目利用Unity3D来实现各种非真实感渲染效果，例如基于色调的卡通渲染，风格化的卡通高光渲染，实时铅笔手绘和轮廓线渲染等。该项目仍在不断更新中。</p>
+                                    <a href="https://github.com/candycat1992/NPR_Lab" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
 
-						</div>
-						<div class="work">
-							<p>
-								<span class="time">2015.03——2015.12 </span>&nbsp;&nbsp;
-								<span class="company">北京漫游谷信息技术有限公司</span>
-							</p>
-							<ul class="text">
-								<!--<li>
-									<span class="companyinfo">公司描述：北京游戏谷，以页游起家的游戏研发公司，主要游戏产品有七雄争霸、横扫西游、全民主公等，现在公司在平衡发展页游和手游</span>
-								</li>-->
-								<li>
-									<span class="dept">部门：七雄无双</span>
-								</li>
-								<li>
-									<span class="job">职位：Java软件工程师</span>
-								</li>
-								<li>
-									主要职责：负责mmorpg手游《七雄无双》的Java服务器端研发工作
-								</li>
-							</ul>
-						</div>
-						<div class="work">
-							<p>
-								<span class="time">2015.12——至今 </span>&nbsp;&nbsp;
-								<span class="company">沈阳凯帝拜耳网络科技有限公司（北京）</span>
-							</p>
-							<ul class="text">
-								<!--<li>
-									<span class="companyinfo">公司描述：公司早期</span>
-								</li>-->
-								<li>
-									<span class="dept">部门：研发部</span>
-								</li>
-								<li>
-									<span class="job">职位：Java服务器主程</span>
-								</li>
-								<li>
-									主要职责：主要负责《英雄守卫战》、《皇家守卫战》、《王者守卫战》、《国战三国志》等游戏的服务端架构、研发与运维工作
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="six wide column">
-						<div class="worklogos">
-							<img class="hidden ui centered image biglogo" src="images/mochalogo.png" alt="" />
-							<img class="hidden ui centered image smalllogo" src="images/tjgd.gif" alt="" />
-							<img class="hidden ui  image biglogo pro" src="images/youxigulogo.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/qxws.png" alt="" />
-							<img class="hidden ui  image biglogo pro" src="images/kidbear_logo.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/yxswz.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/yxswz2.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/wzswz.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/hjswz.png" alt="" />
-							<img class="hidden ui  image smalllogo pro" src="images/gzsgz.png" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section" id="section4">
-				<div class="ui middle aligned container centered stackable grid container">
-					<div class="ten wide column skills">
-						<div class="skill hidden ui medium centered image">
-							<button class="arrows" id="skillpre">
-								<</button>
-							<span id="skillNum">1/3</span>
-							<button class="arrows" id="skillafter">></button>
-							<div class="skilllist text">
-								<div class="skill1">
-									<p>Java</p>
-									<ul>
-										<li>Spring、Hibernate、MyBatis等主流开源框架</li>
-										<li>JFinal极速Web开发框架</li>
-										<li>Java多线程、线程安全</li>
-										<li>多线程并发安全及性能优化</li>
-										<li>TCP/UDP网络编程</li>
-										<li>Netty、Mina等网络通信框架</li>
-										<li>Google ProtocolBuffer</li>
-										<li>常用Linux命令</li>
-										<li>SQL语句、Mysql操作</li>
-										<li>MongoDB的原理与操作</li>
-										<li>Tomcat与Nginx的应用</li>
-										<li>Memcached缓存机制</li>
-										<li>Redis操作，主从配置，哨兵集群</li>
-										<li>Maven、Git、SVN、IDEA、Eclipse等工具</li>
-									</ul>
-								</div>
-								<div class="skill2">
-									<p>Web前端（此页面为本人制作）</p>
-									<ul>
-										<li>html5/JavaScript/css3等前端技术</li>
-										<li>JQuery/mui等常用前端框架</li>
-										<li>JavaScript异步执行机制原理</li>
-										<li>Hbuilder、Webstorm等IDE</li>
-										<li>chrome等Web调试工具</li>
-										<li>Ajax运作机制</li>
-									</ul>
-								</div>
-								<div class="skill3">
-									<p>其他</p>
-									<ul>
-										<li>Cocos2d-x/Cocos2d-js</li>
-										<li>Node.js及其异步执行原理 </li>
-										<li>网易开源游戏服务器框架Pomelo</li>
-										<li>Go语言</li>
-										<li>Android开发</li>
-										<li>有良好的编程习惯，熟悉常用设计模式 </li>
-										<li>有较强的解决问题能力及bug处理能力</li>
-										<li>能快速上手学习新技术以解决当前问题</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="six wide centered right floated column">
-						<h1>工作技能</h1>
-					</div>
-				</div>
-			</div>
-			<div class="section" id="section5">
-				<div class="ui middle aligned container centered stackable grid container">
-					<div class="ten wide centered column">
-						<h1>项目经验</h1>
-						<button class="arrows" id="projectpre">
-							<</button>
-						<span id="projectNum">1/4</span>
-						<button class="arrows" id="projectafter">></button>
-						<div class="project project1 text">
-							项目一：国战三国志
-							<ol>
-								<li>项目时间：<span class="time">2015.12——至今</span></li>
-								<li>项目描述：
-									<p>三国题材SLG手游，游戏以三国为背景，包含PVE，卡牌养成，装备养成，技能养成，竞技场，国战等玩法。游戏主要以异步玩法为主，玩家通过一系列养成系统提升自身战力与其他玩家对抗</p>
-								</li>
-								<li>项目职责
-									<ul>
-										<li>负责服务端架构设计与搭建</li>
-										<li>负责服务端的研发</li>
-										<li>负责后台管理系统研发及数据统计展示</li>
-										<li>负责服务端的部署与运维</li>
-									</ul>
-								</li>
-								<li>技术要点：
-									<ul>
-										<li>使用Netty进行网络层通信</li>
-										<li>使用Hibernate做数据持久化框架</li>
-										<li>使用Redis进行部分游戏数据持久化</li>
-										<li>使用Memcache进行游戏数据缓存及数据库结果集缓存</li>
-										<li>使用Mysql进行数据存储</li>
-										<li>使用JSON数据与客户端（Cocos-lua）交互</li>
-										<li>使用Nginx进行请求转发及负载均衡</li>
-										<li>使用Maven进行项目管理</li>
-										<li>使用SVN管理代码</li>
-										<li>接入各大联运平台的登录支付SDK</li>
-										<li>使用Spring集成框架</li>
-										<li>后台管理系统使用SpringMVC进行MVC分层</li>
-									</ul>
-								</li>
-							</ol>
-						</div>
-						<div class="project project2 text">
-							项目二：英雄守卫战
-							<ol>
-								<li>项目时间：<span class="time">2015.12-至今</span></li>
-								<li>项目描述：
-									<p>创意魔兽塔防类游戏，以魔兽为题材，包含PVE，卡牌养成，装备养成，技能养成，天赋养成等玩法。游戏以单机玩法为主，服务器只提供客户端登录的UID分配、游戏数据存档与读档、支付验证等功能。</p>
-								</li>
-								<li>项目职责
-									<ul>
-										<li>负责服务端架构设计与搭建</li>
-										<li>负责服务端的研发</li>
-										<li>负责后台管理系统研发</li>
-										<li>负责服务端的部署与运维</li>
-									</ul>
-								</li>
-								<li>技术要点：
-									<ul>
-										<li>使用Netty实现HTTP服务器</li>
-										<li>使用Hibernate做数据持久化框架</li>
-										<li>使用Memcache进行游戏数据缓存及数据库结果集缓存</li>
-										<li>使用Mysql进行数据存储</li>
-										<li>使用JSON数据与客户端（Cocos-lua）交互</li>
-										<li>使用Nginx进行请求转发及负载均衡</li>
-										<li>使用Maven进行项目管理</li>
-										<li>使用SVN管理代码</li>
-										<li>接入各大联运平台的登录支付SDK</li>
-										<li>使用Spring集成框架</li>
-										<li>后台管理系统使用SpringMVC进行MVC分层</li>
-									</ul>
-								</li>
-							</ol>
-						</div>
-						<div class="project project3 text">
-							项目三：七雄无双
-							<ol>
-								<li>项目时间：<span class="time">2015.03-2015.12</span></li>
-								<li>项目描述：
-									<p>3D手游，以战国七雄为背景的RPG手游，包含PVP、PVE、MMO、各种养成系统等众多玩法，8.25进行了第一轮封测，10.27进行了第二轮封测，之后在应用宝进行了封测</p>
-								</li>
-								<li>项目职责
-									<ul>
-										<li>负责开发活动、CDKey、签到、首冲、排行榜、好友、黑名单、符文、技能养成等模块</li>
-										<li>负责给运营提供进行游戏管理的GM接口</li>
-									</ul>
-								</li>
-								<li>技术要点：
-									<ul>
-										<li>使用Mina进行网络层通信</li>
-										<li>使用Hibernate做数据持久化框架</li>
-										<li>使用Redis进行部分游戏数据持久化</li>
-										<li>使用Memcache进行游戏数据</li>
-										<li>采用Mysql进行数据存储</li>
-										<li>使用Google的Protobuffer与客户端（unity）进行数据交互</li>
-										<li>使用JSON与运营GM管理平台交互数据</li>
-										<li>使用Ant进行项目管理</li>
-										<li>使用SVN管理代码</li>
-									</ul>
-								</li>
-							</ol>
-						</div>
-						<div class="project project4 text">
-							<p>项目四：天津广电微网站</p>
-							<ol>
-								<li>项目时间：<span class="time">2014.09-2015.03</span></li>
-								<li>项目描述：
-									<p>为天津广电微信公众号的用户提供服务的微网站，包含论坛、电商等模块，并利用微信接口提供其他功能，目前已于天津广电微信公众号投入使用</p>
-								</li>
-								<li>项目职责
-									<ul>
-										<li class="text">负责与前端界面的数据交互</li>
-										<li class="text">负责微网站后台开发工作</li>
-									</ul>
-								</li>
-								<li>技术要点：
-									<ul>
-										<li>使用Spring集成框架</li>
-										<li>使用SpringMVC进行MVC分层</li>
-										<li>使用MyBatis进行数据持久化</li>
-										<li>采用Mysql进行数据存储</li>
-										<li>搭建Memcache和Redis进行数据缓存</li>
-										<li>使用Maven管理项目</li>
-										<li>微信端页面使用Freemarker模板引擎</li>
-										<li>使用JSON/XML与前端进行数据交互</li>
-										<li>使用SVN管理代码</li>
-										<li>使用微信高级接口</li>
-									</ul>
-								</li>
-							</ol>
-						</div>
-					</div>
-					<div class="six wide column">
-						<!--<img class="hidden ui medium centered image" src="images/ft4.png" tppabs="http://www.fittingapp.com/images/ft4.png" alt="" />-->
-						<div class="project1img">
-							<button class="arrows" id="gzpre">
-								<</button>
-							<span id="gzNum">1/5</span>
-							<button class="arrows" id="gzafter">></button>
-							<div class="imgs">
-								<img class="hidden ui medium centered image" src="images/gz/1.jpg" />
-							</div>
-						</div>
-						<div class="project2img">
-							<button class="arrows" id="swzpre">
-								<</button>
-							<span id="swzNum">1/5</span>
-							<button class="arrows" id="swzafter">></button>
-							<div class="imgs">
-								<img class="hidden ui medium centered image" src="images/swz/1.jpg" />
-							</div>
-						</div>
-						<div class="project3img">
-							<button class="arrows" id="qxpre">
-								<</button>
-							<span id="qxNum">1/5</span>
-							<button class="arrows" id="qxafter">></button>
-							<div class="imgs">
-								<img class="hidden ui medium centered image" src="images/qx/1.jpg" />
-							</div>
-						</div>
-						<div class="project4img">
-							<button class="arrows" id="tjgdpre">
-								<</button>
-							<span id="tjgdNum">1/5</span>
-							<button class="arrows" id="tjgdafter">></button>
-							<div class="imgs">
-								<img class="hidden ui medium centered image" src="images/tjgd/1.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section" id="section6">
-				<div class="ui middle aligned container centered stackable grid container">
-					<div class="ten wide centered column">
-						<h1>教育经历</h1>
-						<p>
-							<span class="time">2011.09-2015.07<span>
-							<br/>东北石油大学软件工程专业
-							<br/>英语等级：国家英语六级
-						</p>
-					</div>
-					<div class="six wide column">
-						<img class="hidden ui medium centered image" src="images/dy.jpg" alt="" />
-					</div>
-				</div>
-			</div>
-			<div class="section" id="section7">
-				<!--<img class="hidden ui centered image bookimg" src="images/book.png" alt="" />-->
-				<div class="ui middle aligned container centered stackable grid container">
-					<!--<img class="hidden ui big centered image bookimg" src="images/book.png" alt="" />-->
-					<div class="six wide ">
-						<img class="hidden ui centered image bookimg" src="images/book.png" alt="" />
-					</div>
-					<div class="six wide centered right floated column">
-						<h1 class="chinese">
-							深度解析<br />
-							Java游戏服务器开发</h1>
-						<p class="">
-							<p>
-							<b>基础篇 走进游戏开发</b>
-							<br/>第一章 认识游戏
-							<br/>第二章 环境搭建
-							<br /><b>入门篇 游戏开发</b>
-							<br/>第三章 网络通信
-							<br/>第四章 数据交互
-							<br/>第五章 数据缓存与持久化
-							<br/>第六章 游戏逻辑
-							<br/>第七章 游戏安全
-							<br /><b>高级篇 游戏服务器的设计与优化</b>
-							<br/>第八章 服务器架构分析
-							<br/>第九章 《皇室战争》游戏开发实践
-							<br/>第十章 游戏开发技术前景
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="section fp-auto-height" id="footer">
-				<div class="ui equal width center aligned grid">
-					<div class="row">
-						<div class="column">
-							<h1>谢谢观看</h1>
-						</div>
-					</div>
-					<div class="ui horizontal divider"><i class="tag icon"></i></div>
-					<div class="row">
-						<div class="column">
-							<p>感谢看完我的简历，希望有机会能与进入贵公司，与大家共事
-								<p>
-									PDF简历&nbsp;&nbsp;<a class="text" href="resume.pdf">浏览</a>&nbsp;|&nbsp;<a class="text" href="resume.zip">下载</a>
-						</div>
-					</div>
-					<div class="row">
-						<div class="column"></div>
-					</div>
-				</div>
-				<div class="ui center aligned divided relaxed grid">
-					<div class="doubling five column row">
-						<div class="column">
-							<div class="ui icon header">
-								<i class="grey mail icon"></i>
-							</div>
-							<p>hejincheng1209@163.com</p>
-						</div>
-						<div class="column">
-							<div class="ui icon header">
-								<i class="grey weibo icon"></i>
-							</div>
-							<p><a href="http://github.com/hjcenry">Github</a></p>
-						</div>
-						<div class="column">
-							<div class="ui icon header">
-								<i class="grey pin icon"></i>
-							</div>
-							<p><a href="http://hjcenry.github.io">个人博客</a></p>
-						</div>
-						<div class="column">
-							<div class="ui icon header">
-								<i class="grey call icon"></i>
-							</div>
-							<p>17710122410</p>
-						</div>
-					</div>
-					<div class="black row">
-						<div class="column">
-							<span class="ui image">made by Henry</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</body>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/pencil-drawing.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>图像铅笔画算法</b></p>
+                                    <p><i>开发工具：Matlab</i></p>
+                                    <p>该项目实现了Lu C等人在<i>Combining sketch and tone for pencil drawing production</i>一文中提出的图像铅笔画风格化的算法。</p>
+                                    <a href="https://github.com/candycat1992/PencilDrawing" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
 
-	</html>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/2d-fluid-sim.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>2D流体模拟</b></p>
+                                    <p><i>开发工具：Unity3D, Shader, C#</i></p>
+                                    <p>该项目在Unity中使用Shader进行GPU加速，来实现实时的2D流体模拟。</p>
+                                    <a href="https://vimeo.com/148456579" target="_blank" class="btn btn-default btn-sm" role="button">Video</a> <a href="https://github.com/candycat1992/2DFluidSim" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/virtual-fitting-room.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>幻衣间</b></p>
+                                    <p><i>开发工具：Unity3D, Json, C#, Apache Tomcat，MySQL</i></p>
+                                    <p>高级软件工程课程大作业。幻衣间是一个在线虚拟试衣系统，用户可以通过本系统快速地虚拟试穿各类服装，方便地找到自己喜欢的衣服及搭配方式。本系统支持网络注册、登陆，调节模特身高、肤色等个性化选项，支持品牌、类型等搜索条件的筛选，还提供前去购买的功能，可以直接链接到网店去购买实体衣服。在该项目中，我负责客户端的实现，包括需求编写、界面设计、逻辑实现、与服务器端的通信等。</p>
+                                    <a href="https://vimeo.com/158156787" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/ninja.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>手游《进击的忍者》（原名《忍者天下》）</b></p>
+                                    <p><i>开发工具：Unity3D, C#</i></p>
+                                    <p>《进击的忍者》是梦宝谷倾情推出的全3D超萌动漫手游。游戏继承了热门动漫火影忍者的剧情，同时也融入了很多现代化的游戏玩法。有忍村建设、忍者养成、忍术合成和搭配、装备、任务、副本、竞技、好友等。该项目是于2013年在<a href="http://www.denachina.com/" target="_blank">DeNA上海</a>实习期间参与开发的多平台手机游戏。独立开发了新版本中庄园、忍炼坊等模块的界面/逻辑功能；优化原有的战斗系统表现，优化和开发排行榜等功能；参与日本版的制作等。</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/let-us-fly.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>游戏《Let's Fly》</b></p>
+                                    <p><i>开发工具：Unity3D, C#</i></p>
+                                    <p>《Let's Fly》是一款飞行射击类游戏。该项目获得<b>“谷歌2013年第四届Android应用开发中国大学生挑战赛”本科院校组全国三等奖</b>；获得<b>2013年上海交通大学软件学院软件展示会一等奖</b>。</p>
+                                    <a href="https://vimeo.com/157530217" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/recovery-game.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>医疗康复系列游戏</b></p>
+                                    <p><i>开发工具：Unity3D, Kinect, C#</i></p>
+                                    <p>与校外体感交互公司合作开发的一款诣在通过训练不同的基础手势、帮助有运行缺陷的病人进行康复训练的游戏系统。根据医生的反馈，目前正在使用的医疗康复设备由于动作单一、缺乏趣味性，很容易使病人产生厌倦情绪。本项目把复杂的训练动作（比如说脑瘫、半身瘫病人的翻身、手指力量、站立等动作训练）进行分解，同时对简单的动作进行重复训练，逐步锻炼达到基本能力的形成或提高，最终使病人能够应对日常生活。系统还通过实际器械和虚拟游戏相结合的方式，通过游戏提高趣味性，达到定制的锻炼功能。该项目已经作为医民两用型康复系统的一部分投入浙江萧山医院和嘉兴中医院的试用中了。以该项目为子系统的医民两用型康复系统获得<b>2013年“Kinect for Windows创新应用大赛”开发者组一等奖</b>；获得<b>2013年上海交通大学软件学院软件展示会一等奖</b>。</p>                     
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/kikyou-game.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Kikyou体感游戏</b></p>
+                                    <p><i>开发工具：Unity3D, Kinect, C#</i></p>
+                                    <p>大二暑假大作业。《Kikyou》是一款基于Kinect的体感冒险游戏。游戏以软件学院的一名虚拟女生Kikyou为线索，讲叙了Kikyou因为过度劳累而昏迷，进入异度空间，并在小精灵的帮助下得到四个宝物离开异度空间的故事。游戏共分为四个关卡，如接水果、与敌人对战，难度依次增加，玩家可通过使用道具来回血、改变Kikyou状态，从而帮助自己通过关卡。游戏主要利用了Unity3D来构建3D场景，并结合Kinect来实现控制虚拟人物与虚拟场景之间的互动。该游戏获得<b>2012年上海交通大学软件学院软件展示会一等奖</b>。</p> 
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/love-accounting.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>我爱记账</b></p>
+                                    <p><i>开发工具：Visual Studio, MySQL, C#</i></p>
+                                    <p>大二数据库课程大作业。《我爱记账》是一款多用户、功能实用、界面精致的桌面版记账软件。你可以任意添加、更改和删除账户、账单（支出、支入和转账）、预算等信息，还可以使用查看年度报表、预算对比、账户对账等丰富的功能。软件还支持初始化数据信息、增加新的用户并设置权限。同时，你还可以使用备忘录功能，随时记下你的借入借出、生活小记等信息。</p> 
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/monopoly-online.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>大富翁Online</b></p>
+                                    <p><i>开发工具：Unity3D, C#</i></p>
+                                    <p>软件工程概论课程大作业。“大富翁Online”是根据大富翁棋改编的P2P的多人联网游戏。游戏中支持最多4人联网游戏，共有六个游戏角色可供选择，支持使用点数、购买点卡(共八种点卡)、买卖楼房等功能。凭借该游戏获得<b>2012学年《软件工程概论》课程最佳小组称号</b>。</p> 
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- English Version -->
+<div class="en">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class = "panel panel-default">   
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>Publications</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/2d-to-3d.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p>
+                                        <b>An Interactive 2D-to-3D Cartoon Modeling System</b></br>
+                                        Lele Feng, Xubo Yang, Shuangjiu Xiao and Fan Jiang</br>
+                                        <i>The 10th International Conference on E-Learning and Games (Edutainment 2016)</i>
+                                    </p>
+                                    <p>In this paper, we propose an interactive system that can quickly convert a 2D cartoon painting into a 3D textured cartoon model, enabling non-professional adults and children to easily create personalized 3D contents. Our system exploits a new approach based on solving Poisson equations to generate 3D models, which is free from the limitations of spherical topology in prior works. We also propose a novel method to generate whole textures for both sides of the models to deliver colorful appearances, making it possible to obtain stylized models rendered with cartoon textures. The results have shown that our method can greatly simplify the modeling process comparing with both traditional modeling softwares and prior sketch-based systems.</p>
+                                    <a href="https://vimeo.com/157542775" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/mobile-tracking.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p>
+                                        <b>Real-time Object Tracking And Pose Estimation On Mobile Phones</b></br>
+                                        Lele Feng, Xubo Yang</br>
+                                        <i>Shanghai Jiaotong University 2014 Outstanding Bachelor Paper</i>
+                                    </p>
+                                    <p>In this paper, we analyze the existing object recognition and tracking technology based on natural features, and implement a real-time object tracking system on mobile phones for some AR applications. The original SIFT is known to be a strong, but computationally expensive feature descriptor. FAST corner detection is fast, but the generated information of key points is poor. We achieved the object recognition on mobile phones through a modified version of the SIFT algorithm using FAST. And pose estimation can be obtained from the transformation matrix matching between the identified targets and frame, and then display three-dimensional objects in the screen. In addition, we implemented a PC client management tool for management of all preprocessed target pictures. We give detail descriptors on how we modified the algorithm to make it suitable for mobile phones. We present evaluations on robustness and performance of the system, and implement a demo application in real world. Finally, we discuss the direction of future works.</p>
+                                    <a href="https://vimeo.com/157533815" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class = "panel panel-default">   
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>Projects</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/happy-tree.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Happy Tree</b></p>
+                                    <p><i>Development Tools: Unity3D, Shader, C#</i></p>
+                                    <p>A personal independent game. The player needs to help the Happy Tree blooming. Flowers can be composed of six kinds of elements. Each element has two attributes, speed (moving speed) and strength (growth rate). The player needs to make his own elements occupying all regions in order to win.</p>
+                                    <a href="https://vimeo.com/158157628" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/sampling.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Real-time Stereo Rendering System For Naked Eyes</b></p>
+                                    <p><i>Development Tools: Unity3D, Shader, Compute Shader, C#</i></p>
+                                    <p>This project intends to produce real-time stereo effects for nake eyes by using RGB and depth textures as input. By exploiting GPGPU, I <b>increased the efficiency of the algorithm by 130%</b> and finally achieved real-time rates. The system supports 4k resolution and Windows platform. </p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/npr-lab.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>NPR Lab</b></p>
+                                    <p><i>Development Tools: Unity3D, Shader, C#</i></p>
+                                    <p>This project is intended to realize some NPR effecs by using Unity3D. These effects include tone-based shading, stylized highlights for cartoon rendering，real-time hatching, real-time pencil rendering and so on. This project is still under development.</p>
+                                    <a href="https://github.com/candycat1992/NPR_Lab" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/pencil-drawing.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Pencil Drawing Production</b></p>
+                                    <p><i>Development Tools: Matlab</i></p>
+                                    <p>This project implements the algorithm proposed by Lu C et al. in their paper <i>Combining sketch and tone for pencil drawing production</i>.</p>
+                                    <a href="https://github.com/candycat1992/PencilDrawing" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/2d-fluid-sim.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>2D Fluid Simulation</b></p>
+                                    <p><i>Development Tools: Unity3D, Shader, C#</i></p>
+                                    <p>This project is intended to port real-time 2D fluid simulation to Unity3D by using GPU acceleration.</p>
+                                    <a href="https://vimeo.com/148456579" target="_blank" class="btn btn-default btn-sm" role="button">Video</a> <a href="https://github.com/candycat1992/2DFluidSim" target="_blank" class="btn btn-default btn-sm" role="button">Code</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/virtual-fitting-room.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Virtual Fitting Room</b></p>
+                                    <p><i>Development Tools: Unity3D, Json, C#, Apache Tomcat，MySQL</i></p>
+                                    <p>The course project for Advanced Introduction to Software Engineering. <i>Virtual Fitting Room</i> is an online system for consumers to find suitable clothes effectively. The system supports sign up and login, and the user can customize his/her virtual model by adjusting height, size, complexion and so on. The system also supports filtering based on brands, types and other conditions. If the user is attracted by some cloth, the system can direct to the shopping web page. In this project, I was responsible for the client-side realizations, including writing requirements, designing interfaces, coding and communicating with the server-side.</p>
+                                    <a href="https://vimeo.com/158156787" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/ninja.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Ninja Fighters (Formerly known as <i>Ninja World</i>)</b></p>
+                                    <p><i>Development Tools: Unity3D, C#</i></p>
+                                    <p><i>Ninja Fighters</i> is a 3D mobile game lauched by <a href="http://www.denagames.com/" target="_blank">Mobage</a>. The game inherits the story of the popular Japanese anime <i>Naruto</i>, and integrates a lot of modern gameplay in the meanwhile. I participated in the development of the game as <b>an intern in <a href="http://www.denachina.com/" target="_blank">DeNA China</a></b> in 2013. I developed several important modules under the coorperation with my colleagues.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/let-us-fly.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Let's Fly</b></p>
+                                    <p><i>Development Tools: Unity3D, C#</i></p>
+                                    <p><i>Let's Fly</i> is a flight shooting game on Android platform. This project obtained the third prize in <i><b>the Forth Android Application Development College Challenge Competition</b></i> in 2013 and was one of top ten applications in the software exhibition of Software Engineering in Shanghai Jiao Tong University in 2013.</p>
+                                    <a href="https://vimeo.com/157530217" target="_blank" class="btn btn-default btn-sm" role="button">Video</a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/recovery-game.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Game Series For Medical Rehabilitation</b></p>
+                                    <p><i>Development Tools: Unity3D, Kinect, C#</i></p>
+                                    <p>The game series aim to help patients with movement defects for sports training. According to the doctors' feedback, rehabilitation equipments make the patients boring easily due to the lack of interests. The system combines virtual games and real rehabilitation equipments to bring more joys to the patients. This project won the first prize in the <i><b>Kinect for Windows Innovation Competition 2013</b></i> and was one of top ten applications in the software exhibition of Software Engineering in Shanghai Jiao Tong University in 2013.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/kikyou-game.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Kikyou</b></p>
+                                    <p><i>Development Tools: Unity3D, Kinect, C#</i></p>
+                                    <p><i>Kikyou</i> is a motion sensing game on PC. The background was that our heroine Kikyou was a student in Software Engineering who entered another world at the moment she fainted on the floor. The player controls the movements of Kikyou through a Kinect sensor and needs to help Kikyou leave this world under the help of a fairy. This project was one of top ten applications in the software exhibition of Software Engineering in Shanghai Jiao Tong University in 2012.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/love-accounting.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Love Keeping Accounts</b></p>
+                                    <p><i>Development Tools: Visual Studio, MySQL, C#</i></p>
+                                    <p>The course project for Database Principles and Applications.<i>Love Keeping Accounts</i> is a multi-user, practical desktop software with elegant interface.</p> 
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12 center">
+                                    <img src="/img/in-portfolio/monopoly-online.jpg" class="img-thumbnail">
+                                </div>
+                                <div class="col-md-8 col-xs-12 post-container">
+                                    <p><b>Richman Online</b></p>
+                                    <p><i>Development Tools: Unity3D, C#</i></p>
+                                    <p>The course project for Introduction to Software Engineering. <i>Richman Online</i> is a P2P game, with which we obtained the title of “Top Venue” in this course in 2012.</p> 
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
